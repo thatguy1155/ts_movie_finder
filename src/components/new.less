@@ -1,0 +1,136 @@
+//variables
+@background-color:#282c34;
+@max-width:25%;
+@body-font:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+sans-serif;
+@code-font:source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+monospace;
+
+//mixins
+.flex-box{
+    display: flex;
+  }
+
+.flex-row:extend(.flex-box){
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-column:extend(.flex-box){
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+//maps
+#colors() {
+    primary:#282c34;
+    secondary:black;
+    header-text:white;
+    hover-text:antiquewhite;
+    error:rgb(161, 15, 15);
+}
+
+//the rest
+body {
+    margin: 0;
+    font-family: @body-font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: @code-font;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: #colors[primary];
+    height: 70px;
+    .flex-column;
+    font-size: calc(10px + 2vmin);
+    color: #colors[header-text];
+    padding: 20px;
+    cursor: pointer;
+    h2{
+        margin: 0;
+    }
+  }
+  
+  .spinner {
+    height: 80px;
+    margin: auto;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  /* new css for movie component */
+  
+  * {
+    box-sizing: border-box;
+  }
+ 
+  .movies {
+    .flex-row;
+  }
+  
+  .add-movies {
+    text-align: center;
+    button{
+        font-size: 16px;
+        padding: 8px;
+        margin: 0 10px 30px 10px;
+    }
+  }
+  
+  .movie {
+    padding: 5px 25px 10px 25px;
+    max-width: @max-width;
+    @media screen and (min-width: 694px) and (max-width: 915px){
+        max-width: @max-width * 1.5;
+    }
+    @media screen and (min-width: 694px) and (max-width: 915px){
+        max-width: @max-width * 2;
+    }
+    @media screen and (max-width: 651px) {
+        max-width: @max-width * 4;
+        margin: auto;
+      }
+  }
+  
+  .errorMessage {
+    margin: auto;
+    font-weight: bold;
+    color: #colors[error];
+  }
+  
+  .search {
+    .flex-row;
+    margin-top: 10px;
+    input[type='text']{
+        width: 40%;
+        min-width: 170px;
+    }
+  }
+  
+  input[type="submit"] {
+    padding: 5px;
+    background-color: transparent;
+    color: #colors[secondary];
+    border: 1px solid #colors[secondary];
+    width: 80px;
+    margin-left: 5px;
+    cursor: pointer;
+    &:hover{
+        background-color: #colors[primary];
+        color: #colors[hover-text];
+    }
+  }
+  
